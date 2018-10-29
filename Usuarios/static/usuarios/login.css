@@ -1,0 +1,45 @@
+body {
+    background: #eee !important;	
+    padding-left: 15px;
+}
+
+.loginBox {	
+margin-top: 80px;
+margin-bottom: 80px;
+}
+
+.logeo {
+  max-width: 380px;
+  padding: 15px 35px 45px;
+  background-color: #f1c550;
+  border: 2px solid rgba(0,0,0,0.1);
+  margin: auto;
+  width: 50%;
+}  
+
+.form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+}
+
+input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+  margin-bottom: 20px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn-login {
+
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+
+}
