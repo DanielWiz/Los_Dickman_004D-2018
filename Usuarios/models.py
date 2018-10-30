@@ -1,3 +1,35 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 # Create your models here.
+
+class Regiones(models.Model):
+    region = models.CharField(max_length=200)
+    
+    def __str__(self):
+        return self.region
+
+class Comunas(models.Model):
+    comunas = models.ForeignKey(Regiones,on_delete=models.CASCADE)
+    nombreComuna = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.nombreComuna   
+
+class PerfilUsuario(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    CorreoElectronico = models.CharField(max_length=100)
+    Run = models.CharField(max_length=10)
+    NombreUser = models.CharField(max_length=100)
+    ApellidoUser = models.CharField(max_length=100)
+    FechaNacimiento = models.DateField(null=True)
+    Region = models.ForeignKey(Regiones, on_delete=models.SET_NULL, null=True)
+    Comuna = models.ForeignKey(Comunas, on_delete=models.SET_NULL, null=True) 
+    TIPOVIVIENDA = (('CPG','Casa con patio grande'),('CPP','Casa con patio pequeño'),('CSP','Casa sin patio'),('DEP','Departamento'))
+    TipoVivienda = models.CharField(max_length=3,choices=TIPOVIVIENDA,default='CPG')
+
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        user_profile = PerfilUsuario.objects.create(user=kwargs['instance'])
+
+post_save.connect(create_profile, sender=User)

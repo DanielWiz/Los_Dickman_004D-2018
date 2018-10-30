@@ -1,0 +1,51 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="style/menu.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style/tablas.css">
+        <link rel="stylesheet" href="style/footer.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{% static 'usuarios/footer.css' %}">
+        <link rel="stylesheet" href="{% static 'usuarios/menu.css' %}">
+        <link rel="stylesheet" href="{% static 'usuarios/tablas.css' %}">
+        <link rel="stylesheet" href="{% static 'usuarios/style.css' %}">
+        {% block head %}
+        {% endblock %}
+        <title>{% block title %}Mis Perris{% endblock %}</title>
+    </head>    
+        <body>
+            <nav>
+                <div class="topnav" id="myTopnav">
+                    <div class=logo>
+                        <a><img src="{% static "img/logo.png" %}" alt="logo pagina"></a>
+                    </div>
+                        <a href="index.html" class="active">Inicio</a>
+                        <a href="index2.html">Registro/Login</a>
+                        <a href="index3.html">Galeria</a>
+                        <a href="#">Servicio</a>
+                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                        <i class="fa fa-bars"></i>
+                        </a>
+                </div>
+        </nav> 
+        <div id="content">
+           {% block content %}
+            <main>
+                
+                
+            </main>
+            {% endblock %}
+        </div>        
+        <footer> 
+            <p>Siguenos en nuestras redes sociales</p>
+            <a><img src="{% static "img/twitter.png" %}"> <img src="{% static "img/face.png" %}""><img src="{% static "img/wasp.png" %}""><img src="{% static "img/gmail.png" %}"><img src="{% static "img/inta.png" %}"></a>       
+        </footer>
+    </body>
+ <script src="{% static "js/menu.js" %}"></script>
+ {% block scripts %}
+ {% endblock %}
+</html>

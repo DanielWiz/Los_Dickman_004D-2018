@@ -1,1 +1,50 @@
-{% extend 'base.html' %}
+{% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block head %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{% static 'usuarios/carusel.css' %}">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+  
+    {% block content %}
+    
+           
+        <div class="slideshow-container">
+        
+                
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                  <img src="{% static 'img/perro1.jpg' %}" style="width:100%">
+                </div>
+              
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  <img src="{% static 'img/perro2.jpg' %}" style="width:100%">
+                  <div class="text">Caption Two</div>
+                </div>
+              
+                <div class="mySlides fade">
+                  <div class="numbertext">3 / 3</div>
+                  <img src="{% static 'img/perro3.jpg' %}" style="width:100%">
+                  <div class="text">Caption Three</div>
+                </div>
+              
+                
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+              </div>
+              <br>
+              
+              
+              <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span> 
+                <span class="dot" onclick="currentSlide(2)"></span> 
+                <span class="dot" onclick="currentSlide(3)"></span> 
+              </div>
+            
+    {% endblock %}
+    {% block scripts %}
+    <script src="{% static "js/carusel.js" %}"></script>
+    {% endblock %}
