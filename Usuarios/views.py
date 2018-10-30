@@ -9,6 +9,9 @@ def inicio(request):
 def login(request):
     return render(request, 'usuarios/login.html')     
 
+def logout(request):
+    return render(request, 'usuarios/logout.html')     
+
 def registro(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
