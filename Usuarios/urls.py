@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^$',views.inicio),
     url(r'^login/$', login , {'template_name': 'usuarios/login.html'}),
     url(r'^logout/$', logout , {'template_name': 'usuarios/logout.html'}),
+    url(r'^registro/$', views.registro,name='registro'),
 ]
