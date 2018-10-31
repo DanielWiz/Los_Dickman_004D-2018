@@ -9,6 +9,9 @@ def inicio(request):
 def login(request):
     return render(request, 'usuarios/login.html')     
 
+def adopcion(request):
+    return render(request, 'usuarios/adopcion.html')     
+
 def logout(request):
     return render(request, 'usuarios/logout.html')     
 

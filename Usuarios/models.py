@@ -3,6 +3,17 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 # Create your models here.
 
+class PerrosRescatados(models.Model):
+    Fotografia = models.FileField()
+    NombrePerro = models.CharField(max_length=200)
+    RazaPredominante = models.CharField(max_length=200)
+    Descripcion = models.TextField()
+    ESTADOS = (('R','Rescatado'),('D','Disponible'),('A','Adoptado'))
+    Estado = models.CharField(max_length=1,choices=ESTADOS,default='R')
+    
+    def __str__(self):
+        return self.NombrePerro
+
 class Regiones(models.Model):
     region = models.CharField(max_length=200)
     
