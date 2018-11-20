@@ -50,5 +50,5 @@ def update_user_profile(sender, instance, created, **kwargs):
 def save_profile(sender, instance, created, **kwargs):
     user = instance
     if created:
-        profile = UserProfile(user=user)
+        PerfilUsuario = UserProfile(user=user)
         profile.save()        
