@@ -1,10 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.dispatch import receiver
 # Create your models here.
 
 class PerrosRescatados(models.Model):
-    Fotografia = models.FileField()
+    Fotografia = models.ImageField(upload_to="Usuarios/media/imagenesPerros/")
     NombrePerro = models.CharField(max_length=200)
     RazaPredominante = models.CharField(max_length=200)
     Descripcion = models.TextField()
@@ -28,7 +29,7 @@ class Comunas(models.Model):
         return self.nombreComuna   
 
 class PerfilUsuario(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
     CorreoElectronico = models.CharField(max_length=100)
     Run = models.CharField(max_length=10)
     NombreUser = models.CharField(max_length=100)
@@ -39,8 +40,15 @@ class PerfilUsuario(models.Model):
     TIPOVIVIENDA = (('CPG','Casa con patio grande'),('CPP','Casa con patio pequeño'),('CSP','Casa sin patio'),('DEP','Departamento'))
     TipoVivienda = models.CharField(max_length=3,choices=TIPOVIVIENDA,default='CPG')
 
-def create_profile(sender, **kwargs):
-    if kwargs['created']:
-        user_profile = PerfilUsuario.objects.create(user=kwargs['instance'])
+@receiver(post_save, sender=User)
+def update_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.create(user=instance)
+        instance.Profile.save()
 
-post_save.connect(create_profile, sender=User)
+@receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
+def save_profile(sender, instance, created, **kwargs):
+    user = instance
+    if created:
+        profile = UserProfile(user=user)
+        profile.save()        

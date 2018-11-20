@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="{% static 'usuarios/login.css' %}">
     {% endblock %}
     {% block content %}
-            <div class="loginBox">
-               <form class="logeo">
-                    <h1>Login</h1>       
-                    {% csrf_token %}
-                    {{ form.as_p}}
-                    <button class="btn btn-info btn-lg btn-login" type="submit">Login</button>   
-                </form>
-            </div>
+    <div class="loginBox">
+        <div class="logeo"> 
+            <h2>Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Login</button>
+            </form>
+            <a href="{% url 'password_reset' %}">Olvido su contraseña?</a>     
+        </div>
+    </div>
     {% endblock %}

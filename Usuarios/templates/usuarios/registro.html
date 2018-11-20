@@ -1,12 +1,22 @@
 {% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'usuarios/registro.css' %}">
+{% endblock%}
 
 {% block content %}
-<div class="container">
-    <h1>Registro</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Submit</button>
-    </form>
+<div class="containerRegistro">
+        <h2>Registro</h2>
+        <form method="post">
+          {% csrf_token %}
+          {% for field in form %}
+            <p>
+              {{ field.label_tag }}<br>
+              {{ field }}
+            </p>
+          {% endfor %}
+          <button class="btn btn-success"" type="submit">Registrarse</button>
+      </form>
 </div>
 {% endblock %}

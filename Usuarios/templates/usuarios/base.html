@@ -1,6 +1,7 @@
 {% load static %}
 <html>
     <head>
+        <meta lang="es">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,33 +18,41 @@
         {% endblock %}
         <title>{% block title %}Mis Perris{% endblock %}</title>
     </head>    
-        <body>
-            <nav>
-                <div class="topnav" id="myTopnav">
-                    <div class=logo>
-                        <a><img src="{% static "img/logo.png" %}" alt="logo pagina"></a>
-                    </div>
-                        <a href="/" class="active">Inicio</a>
-                        <a href="/login">Login</a>
-                        <a href="/registro">Registro</a>
-                        <a href="/adopcion">Galeria</a>
-                        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
-                        </a>
-                </div>
-        </nav> 
+
+    <div id="container">
+            <div id="body">
+                <body>
+                    <nav>
+                        <div class="topnav" id="myTopnav">
+                            <div class=logo>
+                                <a><img src="{% static "img/logo.png" %}" alt="logo pagina"></a>
+                            </div>
+                                <a href="/" class="active">Inicio</a>
+                                <a href="/login">Login</a>
+                                <a href="/registro">Registro</a>
+                                <a href="/adopcion">Galeria</a>
+                                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                                <i class="fa fa-bars"></i>
+                                </a>
+                            <div class="NombreUser">
+                                Usuario: {{request.user.username}}
+                            </div>
+                        </div>               
+                    </nav> 
         <div id="content">
-           {% block content %}
-            <main>
-                
-                
-            </main>
+            {% block content %}
+                <main>
+                                
+                                
+                </main>
             {% endblock %}
-        </div>        
-        <footer> 
-            <p>Siguenos en nuestras redes sociales</p>
-            <a><img src="{% static "img/twitter.png" %}"> <img src="{% static "img/face.png" %}""><img src="{% static "img/wasp.png" %}""><img src="{% static "img/gmail.png" %}"><img src="{% static "img/inta.png" %}"></a>       
-        </footer>
+        </div>    
+
+        <div id="footer">
+                <p>Siguenos en nuestras redes sociales</p>
+                <a><img src="{% static "img/twitter.png" %}"> <img src="{% static "img/face.png" %}""><img src="{% static "img/wasp.png" %}""><img src="{% static "img/gmail.png" %}"><img src="{% static "img/inta.png" %}"></a>  
+        </div>
+       
     </body>
  <script src="{% static "js/menu.js" %}"></script>
  {% block scripts %}

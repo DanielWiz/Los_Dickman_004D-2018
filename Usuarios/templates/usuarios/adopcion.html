@@ -1,13 +1,41 @@
 {% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'usuarios/adopcion.css' %}">
+{% endblock %}
 
 {% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ field }}
+    <button class="btn btn-success" type="submit">Filtrar</button>
+    </form>
     {% for perro in perros %}
-        <div class="post">
-            <div class="date">
-                {{ perros.published_date }}
-            </div>
-            <h1><a href="">{{ perro.title }}</a></h1>
-            <p>{{ perro.text|linebreaksbr }}</p>
-        </div>
+        <div class="containerPerros">
+                    <div>
+                    <img src="{{ perro.Fotografia.url }}">
+                    </div>
+                    <div class="Nombre">
+                    {{ perro.NombrePerro }}
+                    </div>
+                    <div class="Raza">
+                    Raza: {{ perro.RazaPredominante }}
+                    </div>
+                    <div class="Descripcion">
+                    Descripcion: {{ perro.Descripcion }}
+                    </div>
+                    <div class="Estado">
+                        Estado: {% if perro.Estado == "R" %}
+                            Rescatado
+                        {% endif %}
+                        {% if perro.Estado == "A" %}
+                            Adoptado
+                        {% endif %}
+                        {% if perro.Estado == "D" %}
+                            Disponible
+                        {% endif %}
+                    </div>     
+        </div>        
     {% endfor %}
 {% endblock %}
