@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$',views.inicio),
-    url(r'^login/$', auth_views.login,{'template_name': 'usuarios/login.html'},name='login'),
+    url(r'^login/$', auth_views.LoginView.as_view(template_name="usuarios/login.html"),name='login'),
     url(r'^logout/$', views.logout),
     url(r'^registro/$', views.signup,name='registro'),
     url(r'^adopcion/$', views.adopcion,),
