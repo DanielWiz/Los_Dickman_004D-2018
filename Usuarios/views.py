@@ -18,6 +18,7 @@ def signup(request):
             user.profile.Correelectronico = form.cleaned_data.get('Correoelectronico')
             user.profile.Tipovivienda = form.cleaned_data.get('TipoVivienda')
             user.save()
+            form.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
