@@ -45,4 +45,11 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         PerfilUsuario.objects.create(user=instance)
     instance.profile.save()
+
+@receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
+def save_profile(sender, instance, created, **kwargs):
+    user = instance
+    if created:
+        profile = PerfilUsuario(user=user)
+        profile.save()
     
