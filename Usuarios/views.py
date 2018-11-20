@@ -10,12 +10,12 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.FechaNacimiento = form.cleaned_data.get('FechaNacimiento')
+            user.refresh_from_db()
+            user.profile.CorreoElectronico = form.cleaned_data.get('Correoelectronico')  # load the profile instance created by the signal
             user.profile.Run = form.cleaned_data.get('Run')
             user.profile.Nombreuser = form.cleaned_data.get('Nombreuser')
             user.profile.Apellidouser = form.cleaned_data.get('Apellidouser')
-            user.profile.Correelectronico = form.cleaned_data.get('Correoelectronico')
+            user.profile.FechaNacimiento = form.cleaned_data.get('FechaNacimiento')
             user.profile.Tipovivienda = form.cleaned_data.get('TipoVivienda')
             user.save()
             form.save()
@@ -28,6 +28,8 @@ def signup(request):
     else:
         form = SignUpForm()
     return render(request, 'usuarios/registro.html', {'form': form})
+            
+            
 
 def inicio(request):
     return render(request, 'usuarios/inicio.html')

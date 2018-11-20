@@ -51,5 +51,5 @@ def save_profile(sender, instance, created, **kwargs):
     user = instance
     if created:
         profile = PerfilUsuario(user=user)
-        profile.save()
+    profile.save()
     
