@@ -43,8 +43,8 @@ class PerfilUsuario(models.Model):
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.create(user=instance)
-        instance.Profile.save()
+        profile.objects.create(user=instance)
+        instance.profile.save()
 
 @receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
 def save_profile(sender, instance, created, **kwargs):
