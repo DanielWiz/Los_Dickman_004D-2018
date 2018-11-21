@@ -4,32 +4,24 @@ margin-bottom: 80px;
 }
 
 .logeo {
-  max-width: 380px;
+  max-width: 350px;
   padding: 15px 35px 45px;
   background-color: #f1c550;
   border: 2px solid rgba(0,0,0,0.1);
   margin: auto;
   width: 50%;
+  float: left;
+  border-left:1em solid transparent;
+  border-right:1em solid transparent;
+  padding: 2%
+  border: 5px solid #a1c45a;
+  margin-left: 37%;
+  border-radius: 25px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }  
 
-.form-control {
-  position: relative;
-  font-size: 16px;
-  height: auto;
-  padding: 10px;
-}
-
-input[type="text"] {
-  margin-bottom: -1px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-input[type="password"] {
-  margin-bottom: 20px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
 
 .btn-login {
 
@@ -37,4 +29,11 @@ input[type="password"] {
     background-color: #5cb85c;
     border-color: #4cae4c;
 
+}
+
+@media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+    }
 }

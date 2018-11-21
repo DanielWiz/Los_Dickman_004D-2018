@@ -19,7 +19,8 @@ class SignUpForm(UserCreationForm):
     Run = forms.CharField(max_length=10,required=True)
     NombreUser = forms.CharField(max_length=100,required=True)
     ApellidoUser = forms.CharField(max_length=100,required=True)
-    FechaNacimiento = forms.DateField(widget=forms.TextInput(attrs={'class':'datepicker'}),required=True)
+    YEARS= [x for x in range(1900,2018)]
+    FechaNacimiento = forms.DateField(widget=forms.SelectDateWidget(years=YEARS),required=True)
     TIPOVIVIENDA = (('CPG','Casa con patio grande'),('CPP','Casa con patio pequeño'),('CSP','Casa sin patio'),('DEP','Departamento'))
     TipoVivienda = forms.ChoiceField(choices=TIPOVIVIENDA)
 

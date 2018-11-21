@@ -1,0 +1,16 @@
+{% extends 'usuarios/base.html' %}
+
+{% block content %}
+	{% if post.Estado %}
+	    <div class="perro">
+	    	 {% if perro.Estado %}
+	    	<div>
+			  {% endif %}    		
+        	<img src="{{ perro.Fotografia.url }}">
+        	</div>
+          {% endif %}
+        <h1>{{ perro.NombrePerro }}</h1>
+        <h2>{{ perro.RazaPredominante }}</h2>
+        <p>{{ perro.Descripcion }}</p>
+    </div>
+{% endblock %}

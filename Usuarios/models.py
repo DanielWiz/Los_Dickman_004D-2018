@@ -30,13 +30,11 @@ class Comunas(models.Model):
 
 class PerfilUsuario(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
-    CorreoElectronico = models.CharField(max_length=100)
-    Run = models.CharField(max_length=10)
-    NombreUser = models.CharField(max_length=100)
-    ApellidoUser = models.CharField(max_length=100)
+    CorreoElectronico = models.CharField(max_length=100,null=True)
+    Run = models.CharField(max_length=10,null=True)
+    NombreUser = models.CharField(max_length=100,null=True)
+    ApellidoUser = models.CharField(max_length=100,null=True)
     FechaNacimiento = models.DateField(null=True)
-    Region = models.ForeignKey(Regiones, on_delete=models.SET_NULL, null=True)
-    Comuna = models.ForeignKey(Comunas, on_delete=models.SET_NULL, null=True) 
     TIPOVIVIENDA = (('CPG','Casa con patio grande'),('CPP','Casa con patio pequeño'),('CSP','Casa sin patio'),('DEP','Departamento'))
     TipoVivienda = models.CharField(max_length=3,choices=TIPOVIVIENDA,default='CPG')
 
@@ -45,11 +43,4 @@ def update_user_profile(sender, instance, created, **kwargs):
     if created:
         PerfilUsuario.objects.create(user=instance)
     instance.profile.save()
-
-@receiver(post_save, sender=User, dispatch_uid='save_new_user_profile')
-def save_profile(sender, instance, created, **kwargs):
-    user = instance
-    if created:
-        profile = PerfilUsuario(user=user)
-        profile.save()
     

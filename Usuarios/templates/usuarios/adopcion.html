@@ -17,7 +17,7 @@
                     <img src="{{ perro.Fotografia.url }}">
                     </div>
                     <div class="Nombre">
-                    {{ perro.NombrePerro }}
+                    <h1><a href="{% url 'detalle_perro' pk=perro.pk %}">{{ perro.NombrePerro }}</a></h1>
                     </div>
                     <div class="Raza">
                     Raza: {{ perro.RazaPredominante }}
