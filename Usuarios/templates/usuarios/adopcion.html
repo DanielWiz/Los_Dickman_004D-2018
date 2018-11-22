@@ -12,6 +12,7 @@
     <button class="btn btn-success" type="submit">Filtrar</button>
     </form>
     {% for perro in perros %}
+    <div class="box">
         <div class="containerPerros">
                     <div>
                     <img src="{{ perro.Fotografia.url }}">
@@ -36,6 +37,7 @@
                             Disponible
                         {% endif %}
                     </div>     
-        </div>        
+        </div>
+    </div>            
     {% endfor %}
 {% endblock %}

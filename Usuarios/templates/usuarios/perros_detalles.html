@@ -1,16 +1,48 @@
 {% extends 'usuarios/base.html' %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'usuarios/detalles.css' %}">
+{% endblock %}
 
 {% block content %}
-	{% if post.Estado %}
-	    <div class="perro">
-	    	 {% if perro.Estado %}
-	    	<div>
-			  {% endif %}    		
-        	<img src="{{ perro.Fotografia.url }}">
-        	</div>
-          {% endif %}
-        <h1>{{ perro.NombrePerro }}</h1>
-        <h2>{{ perro.RazaPredominante }}</h2>
-        <p>{{ perro.Descripcion }}</p>
-    </div>
+	<div class="box">
+		<div class="imagenPerro">
+			<img src="{{ perros.Fotografia.url }}">
+		</div>
+		<div class="CuadroTexto">
+			<div class="NombrePerro">
+				<h1>{{ perros.NombrePerro }}</h1>
+			</div>
+			<div class="Raza">
+				<h2>Raza: {{ perros.RazaPredominante }}</h2>
+			</div>
+			<div class="Descripcion">
+				<p>{{ perros.Descripcion }}</p>
+			</div>
+			<div class="EstadoPerro">
+					<h3>Estado: {% if perros.Estado == "R" %}
+					Rescatado
+				{% endif %}</h3>
+				<h3>{% if perros.Estado == "A" %}
+					Adoptado
+				{% endif %}</h3>
+				<h3>{% if perros.Estado == "D" %}
+					Disponible
+				{% endif %}</h3>
+			</div>
+			{% if perros.Estado == "R" %}
+			<button class="btn btn-success disabled" type="submit">Adoptar</button>
+            {% endif %}
+			
+			{% if perros.Estado == "A" %}
+			<button class="btn btn-success disabled" type="submit">Adoptar</button>
+            {% endif %}
+			
+			{% if perros.Estado == "D" %}
+			<button class="btn btn-success" type="submit">Adoptar</button>
+            {% endif %}
+		</div>
+
+	</div>
 {% endblock %}

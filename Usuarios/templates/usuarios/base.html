@@ -13,7 +13,6 @@
         <link rel="stylesheet" href="{% static 'usuarios/footer.css' %}">
         <link rel="stylesheet" href="{% static 'usuarios/menu.css' %}">
         <link rel="stylesheet" href="{% static 'usuarios/tablas.css' %}">
-        <link rel="stylesheet" href="{% static 'usuarios/style.css' %}">
         {% block head %}
         {% endblock %}
         <title>{% block title %}Mis Perris{% endblock %}</title>
@@ -35,7 +34,7 @@
                                 <i class="fa fa-bars"></i>
                                 </a>
                             <div class="NombreUser">
-                                Usuario: {{request.user.username}}
+                                Bienvenido: {{request.user.username}}
                             </div>
                         </div>               
                     </nav> 

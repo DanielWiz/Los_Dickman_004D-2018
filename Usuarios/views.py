@@ -1,7 +1,7 @@
 from django import forms
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
-from django.contrib.auth import authenticate 
+from django.shortcuts import render, get_object_or_404,redirect
+from django.contrib.auth import authenticate, login 
 from django.contrib.auth.forms import UserCreationForm
 from .models import PerrosRescatados
 from .forms import SignUpForm,FiltroPerro
@@ -12,7 +12,12 @@ def RegistroDatos(request):
         if form.is_valid():
             user = form.save()
             user.refresh_from_db()  # load the profile instance created by the signal
-            user.profile.birth_date = form.cleaned_data.get('FechaNacimiento')
+            user.profile.CorreoElectronico = form.cleaned_data.get('CorreoElectronico')
+            user.profile.Run = form.cleaned_data.get('Run')
+            user.profile.NombreUser = form.cleaned_data.get('NombreUser')
+            user.profile.ApellidoUser = form.cleaned_data.get('ApellidoUser')
+            user.profile.FechaNacimiento = form.cleaned_data.get('FechaNacimiento')
+            user.profile.TipoVivienda = form.cleaned_data.get('TipoVivienda')
             user.save()
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
@@ -27,8 +32,8 @@ def RegistroDatos(request):
 def inicio(request):
     return render(request, 'usuarios/inicio.html')
 
-def login(request):
-    return render(request, 'usuarios/login.html')     
+def logeo(request):
+    return render(request, 'usuarios/login.html')
 
 def adopcion(request):
     if request.method == 'POST':

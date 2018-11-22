@@ -27,3 +27,19 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'FechaNacimiento', 'password1', 'password2','Run','NombreUser','ApellidoUser','CorreoElectronico','TipoVivienda')
+
+    def save(self,commit = True):
+         user = super(SignUpForm, self).save(commit = False)
+         user.username = self.cleaned_data['username']
+         user.password1 = self.cleaned_data['password1']
+         user.CorreoElectronico = self.cleaned_data['CorreoElectronico']
+         user.Run = self.cleaned_data['Run']
+         user.NombreUser = self.cleaned_data['NombreUser']
+         user.ApellidoUser = self.cleaned_data['ApellidoUser']
+         user.FechaNacimiento = self.cleaned_data['FechaNacimiento']
+         user.TipoVivienda = self.cleaned_data['TipoVivienda']
+         
+         if commit:
+             user.save()
+
+         return user    
