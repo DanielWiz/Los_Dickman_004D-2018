@@ -12,12 +12,13 @@
     <button class="btn btn-success" type="submit">Filtrar</button>
     </form>
     {% for perro in perros %}
+    <div class="box">
         <div class="containerPerros">
                     <div>
                     <img src="{{ perro.Fotografia.url }}">
                     </div>
                     <div class="Nombre">
-                    {{ perro.NombrePerro }}
+                    <h1><a href="{% url 'detalle_perro' pk=perro.pk %}">{{ perro.NombrePerro }}</a></h1>
                     </div>
                     <div class="Raza">
                     Raza: {{ perro.RazaPredominante }}
@@ -36,6 +37,7 @@
                             Disponible
                         {% endif %}
                     </div>     
-        </div>        
+        </div>
+    </div>            
     {% endfor %}
 {% endblock %}
