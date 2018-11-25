@@ -37,7 +37,8 @@
                                     {% if request.user.username == "" %}
                                     
                                     {% else %}
-                                    <a class="deslogeo" href="{% url 'logout' %}">Deslogeo</a> Bienvenido: {{request.user.username}}
+                                    <a class="deslogeo" href="{% url 'logout' %}">Deslogeo</a> 
+                                    Bienvenido: {{request.user.username}}
                                     {% endif %}
                             </div>
                         </div>               
