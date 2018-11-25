@@ -10,11 +10,7 @@ body {
   }
 
   .deslogeo{
-    padding: 4;
-    height: 41px;
-    text-align: center;
-    margin-right: 40px;
-    font-size: 18px; 
+    box-sizing: inherit;
   }
   
   .NombreUser {
