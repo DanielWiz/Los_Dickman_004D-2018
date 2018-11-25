@@ -124,15 +124,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = '/'
 
-<<<<<<< HEAD
-MEDIA_URL = '/media/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-=======
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOpenId',
-    'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.google.GoogleOAuth',
     'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
@@ -143,4 +135,3 @@ SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 SOCIAL_AUTH_GITHUB_KEY = '9d569cc586f1b22a2e61'
 SOCIAL_AUTH_GITHUB_SECRET = '47fa0e71715349c323431c68dc54950f4a8a423f'
->>>>>>> 82ba68d998d51784e2420f18c12637667ccc1a8d
