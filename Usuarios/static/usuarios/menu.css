@@ -8,6 +8,13 @@ body {
     overflow: hidden;
     background-color: #97cba9;
   }
+
+  .deslogeo{
+    padding: 4;
+    height: 41px;
+    text-align: center;
+    margin-right: 40px; 
+  }
   
   .NombreUser {
     float: right;
@@ -40,6 +47,10 @@ body {
    
   }
   
+.btn btn-sm{
+   color: #97cba9;
+}
+
   .topnav .icon {
     display: none;
   }

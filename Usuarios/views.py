@@ -5,6 +5,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
 from .models import PerrosRescatados
 from .forms import SignUpForm,FiltroPerro
+from django.views.generic import TemplateView
+
+class IndexView(TemplateView):
+
+    template_name = 'login.html'
+
 
 def RegistroDatos(request):
     if request.method == 'POST':
@@ -52,7 +58,9 @@ def adopcion(request):
          
 
 def logout(request):
-    return render(request, 'usuarios/logout.html')     
+    """Logs out user"""
+    auth_logout(request)
+    return render(request, 'usuarios/inicio.html')  
  
 def detalle_perro(request, pk):
     perros = get_object_or_404(PerrosRescatados, pk=pk)

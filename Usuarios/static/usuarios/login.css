@@ -32,8 +32,16 @@ margin-bottom: 80px;
 }
 
 @media screen and (max-width: 600px) {
-    .col-25, .col-75, input[type=submit] {
-        width: 100%;
-        margin-top: 0;
-    }
+    .logeo {
+        background-color: #f1c550;
+        width: 50%;
+        float: left;
+        padding: 2%;
+        border: 5px solid #a1c45a;
+        margin-left: 2%;
+        border-radius: 25px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }  
 }
