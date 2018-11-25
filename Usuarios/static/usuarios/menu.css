@@ -12,6 +12,10 @@ body {
   .deslogeo{
     box-sizing: inherit;
   }
+
+  .usuario{
+    text-align: left;
+  }
   
   .NombreUser {
     float: right;
