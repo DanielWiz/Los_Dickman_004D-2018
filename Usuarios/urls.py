@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url,include
 from . import views
 from django.urls import path
 from django.conf.urls.static import static
@@ -7,10 +7,11 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$',views.inicio),
+    path('', include('social_django.urls', namespace='social')),
     url(r'^login/$', auth_views.LoginView.as_view(template_name="usuarios/login.html"),name='login'),
-    url(r'^logout/$', views.logout),
     url(r'^registro/$', views.RegistroDatos,name='registro'),
     url(r'^adopcion/$', views.adopcion,),
+    url(r'^logout/$', auth_views.logout, {'next_page':'/'}, name='logout'),
     path('perro/<int:pk>/', views.detalle_perro, name='detalle_perro'),
     url(r'^password_reset/$', auth_views.PasswordResetView.as_view(template_name="registration/password_reset_form.html"), name='password_reset'),
     url(r'^password_reset/done/$', auth_views.PasswordResetDoneView.as_view(template_name="registration/password_reset_done.html"), name='password_reset_done'),
