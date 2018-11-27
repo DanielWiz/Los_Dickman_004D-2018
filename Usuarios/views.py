@@ -66,4 +66,6 @@ def detalle_perro(request, pk):
     perros = get_object_or_404(PerrosRescatados, pk=pk)
     return render(request, 'usuarios/perros_detalles.html', {'perros': perros})            
 
-
+def base_layout(request):
+	template='posts/base.html'
+	return render(request,template)
