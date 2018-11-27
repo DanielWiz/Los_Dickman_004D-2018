@@ -67,5 +67,5 @@ def detalle_perro(request, pk):
     return render(request, 'usuarios/perros_detalles.html', {'perros': perros})            
 
 def base_layout(request):
-	template='posts/base.html'
+	template='base.html'
 	return render(request,template)
