@@ -36,7 +36,7 @@ def RegistroDatos(request):
             
 
 def inicio(request):
-    return render(request, 'usuarios/inicio.html')
+    return render(request, 'usuarios/index.html')
 
 def logeo(request):
     return render(request, 'usuarios/login.html')
@@ -60,12 +60,9 @@ def adopcion(request):
 def logout(request):
     """Logs out user"""
     auth_logout(request)
-    return render(request, 'usuarios/inicio.html')  
+    return render(request, 'usuarios/index.html')  
  
 def detalle_perro(request, pk):
     perros = get_object_or_404(PerrosRescatados, pk=pk)
     return render(request, 'usuarios/perros_detalles.html', {'perros': perros})            
 
-def base_layout(request):
-	template='base.html'
-	return render(request,template)

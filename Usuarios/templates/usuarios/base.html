@@ -1,4 +1,3 @@
-{% load pwa %}
 {% load static %}
 <html>
     <head>
@@ -11,7 +10,6 @@
         <link rel="stylesheet" href="{% static 'usuarios/footer.css' %}">
         <link rel="stylesheet" href="{% static 'usuarios/menu.css' %}">
         <link rel="stylesheet" href="{% static 'usuarios/tablas.css' %}">
-        {% progressive_web_app_meta %}
         {% block head %}
         {% endblock %}
         <title>{% block title %}Mis Perris{% endblock %}</title>
@@ -61,6 +59,15 @@
         </footer>
        
     </body>
+    <script>
+        if('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                    .register('/sw.js')
+                    .then(function() { console.log("Service Worker Registered"); });
+        }
+    </script>
+            
+
  <script src="{% static "js/menu.js" %}"></script>
  {% block scripts %}
  {% endblock %}
