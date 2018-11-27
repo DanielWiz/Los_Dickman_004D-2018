@@ -53,19 +53,15 @@
             {% endblock %}
         </div>    
 
-        <footer>
-                <p>Siguenos en nuestras redes sociales</p>
-                <a><img src="{% static "img/twitter.png" %}"> <img src="{% static "img/face.png" %}""><img src="{% static "img/wasp.png" %}""><img src="{% static "img/gmail.png" %}"><img src="{% static "img/inta.png" %}"></a>  
-        </footer>
-       
-    </body>
     <script>
         if('serviceWorker' in navigator) {
             navigator.serviceWorker
                     .register('/sw.js')
                     .then(function() { console.log("Service Worker Registered"); });
         }
-    </script>
+    </script>   
+    </body>
+    
             
 
  <script src="{% static "js/menu.js" %}"></script>
