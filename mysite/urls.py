@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^usuario/', include('Usuarios.urls')),
     url(r'', include('Usuarios.urls')),
     url('',IndexView.as_view()),
+    path('', include('pwa.urls')),
 ]

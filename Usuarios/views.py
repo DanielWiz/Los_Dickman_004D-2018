@@ -28,18 +28,15 @@ def RegistroDatos(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=user.username, password=raw_password)
             login(request, user)
-            return redirect('/login/')
+            return redirect('/inicio/')
     else:
         form = SignUpForm()
-    return render(request, 'usuarios/registro.html', {'form': form})
+    return render(request, 'registro.html', {'form': form})
             
             
 
 def inicio(request):
-    return render(request, 'usuarios/inicio.html')
-
-def logeo(request):
-    return render(request, 'usuarios/login.html')
+    return render(request, 'index.html')
 
 def adopcion(request):
     if request.method == 'POST':
@@ -54,16 +51,19 @@ def adopcion(request):
         form = FiltroPerro()
         args1 = {'form' : form}
         perros = PerrosRescatados.objects.all()
-        return render(request, 'usuarios/adopcion.html',{'perros': perros},args1)
+        return render(request, 'adopcion.html',{'perros': perros},args1)
          
 
 def logout(request):
     """Logs out user"""
     auth_logout(request)
-    return render(request, 'usuarios/inicio.html')  
+    return render(request, 'index.html')  
  
 def detalle_perro(request, pk):
     perros = get_object_or_404(PerrosRescatados, pk=pk)
-    return render(request, 'usuarios/perros_detalles.html', {'perros': perros})            
+    return render(request, 'perros_detalles.html', {'perros': perros}) 
 
 
+def base_layout(request):
+    template = 'base.html'
+    return render(request, template)
