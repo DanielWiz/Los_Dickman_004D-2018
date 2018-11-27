@@ -1,11 +1,11 @@
 if ('serviceWorker' in navigator) {
 
     navigator.serviceWorker
-        .register('./service-worker.js',{scope: './'})
-        .then(function(registration){
+        .register('./service-worker.js', { scope: './' })
+        .then(function(registration) {
             console.log("Service Worker Registered", registration);
         })
-        .catch(function(err){
-            console.log("Service Worker Fail",err)
+        .catch(function(err) {
+            console.log("Service Worker Fail",err);
         })
 }
